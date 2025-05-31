@@ -1,15 +1,21 @@
 {
     "compilerOptions": {
         "strict": true,
-        "target": "es6",
+        "target": "ESNext",
+        "module": "ESNext",
         "moduleResolution": "bundler",
-        "module": "ES6",
         "esModuleInterop": true,
         "sourceMap": false,
-        "rootDir": "src",
-        "outDir": "dist/js",
-        "noEmitOnError": true,
-        "jsx": "react",
-        "typeRoots": [ "node_modules/@types" ]
-    }
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "typeRoots": [ "node_modules/@types" ],
+        "skipLibCheck": true,
+        "isolatedModules": true,
+            "baseUrl": ".",
+            "paths": {
+                "@/*": ["./*"]
+            }
+    },
+    "include": ["src", "vite.config.ts"],
+    "exclude": ["node_modules", "dist"]
 }
