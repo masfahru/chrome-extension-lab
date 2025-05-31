@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
+import './styles.css';
 
 const Popup = () => {
   const [count, setCount] = useState(0);

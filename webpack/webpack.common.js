@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const srcDir = path.join(__dirname, "..", "src");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
@@ -16,10 +17,23 @@ module.exports = {
     },
     optimization: {
         splitChunks: {
-            name: "vendor",
-            chunks(chunk) {
-              return chunk.name !== 'background';
-            }
+            chunks: 'all',
+            cacheGroups: {
+                vendor: {
+                    name: "vendor",
+                    chunks: (chunk) => chunk.name !== 'background',
+                    minChunks: 2,
+                    priority: 10,
+                },
+                // New cache group to consolidate all CSS into a single 'styles' chunk
+                allStyles: {
+                    name: 'styles', // This chunk will be named 'styles'
+                    type: 'css/mini-extract', // Target only CSS modules
+                    chunks: 'all', // Consider all CSS from all entry points
+                    enforce: true, // Force the creation of this chunk
+                    priority: 20, // Higher priority to ensure it processes CSS modules
+                }
+            },
         },
     },
     module: {
@@ -31,7 +45,7 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ["style-loader", "css-loader", "postcss-loader"],
+                use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
             }
         ],
     },
@@ -43,5 +57,8 @@ module.exports = {
             patterns: [{ from: ".", to: "../", context: "public" }],
             options: {},
         }),
+      new MiniCssExtractPlugin({
+          filename: "../css/[name].css", // e.g., ../css/styles.a1b2c3d4.css
+      }),
     ],
 };
