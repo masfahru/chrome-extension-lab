@@ -1,7 +1,7 @@
 {
-  "name": "learning-building-chrome-extensions",
+  "name": "chrome-extension-lab",
   "version": "1.0.0",
-  "description": "learning-building-chrome-extensions",
+  "description": "chrome-extension-lab",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --config webpack/webpack.dev.js --watch",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/masfahru/learning-building-chrome-extensions.git"
+    "url": "https://github.com/masfahru/chrome-extension-lab.git"
   },
   "dependencies": {
     "react": "^18.2.0",
