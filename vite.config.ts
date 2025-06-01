@@ -1,9 +1,9 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
 
 export default defineConfig(async (): Promise<import('vite').UserConfig> => {
-  const tailwindcss = (await import('@tailwindcss/vite')).default;
+  const tailwindcss = (await import('@tailwindcss/vite')).default
 
   return {
     plugins: [
@@ -12,7 +12,7 @@ export default defineConfig(async (): Promise<import('vite').UserConfig> => {
     ],
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, "./"),
+        '@': path.resolve(__dirname, './'),
       },
     },
     build: {
@@ -29,14 +29,14 @@ export default defineConfig(async (): Promise<import('vite').UserConfig> => {
           entryFileNames: 'js/[name].js',
           chunkFileNames: 'js/vendor.js',
           assetFileNames: (assetInfo) => {
-            if (assetInfo.names?.some((name) => name.endsWith('.css'))) {
-              return 'css/styles.css';
+            if (assetInfo.names?.some(name => name.endsWith('.css'))) {
+              return 'css/styles.css'
             }
-            return 'assets/[name][extname]';
+            return 'assets/[name][extname]'
           },
         },
       },
     },
     publicDir: 'public',
-  };
-});
+  }
+})

@@ -1,6 +1,6 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import './styles.css';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import './styles.css'
 
 const Options = () => {
   return (
@@ -18,13 +18,13 @@ const Options = () => {
         Enable Feature Y
       </label>
     </div>
-  );
-};
+  )
+}
 
-const root = createRoot(document.getElementById("root")!);
+const root = createRoot(document.getElementById('root')!)
 
 root.render(
   <React.StrictMode>
     <Options />
-  </React.StrictMode>
-);
+  </React.StrictMode>,
+)
